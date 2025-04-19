@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake Area Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <style type="text/css">
+		*{
+			text-decoration: none;
+		}
+		.navbar{
+            position: fixed; width: 100%; top: 0;
+			background: whitesmoke; font-family: calibri; padding-right: 15px;padding-left: 15px; z-index: 100;
+		}
+		.navdiv{
+			display: flex; align-items: center; justify-content: space-between;
+		}
+		.logo a{
+			font-size: 60px;
+            font-weight: 600; 
+            color: #002D62;
+            font-family: 'Times New Roman', Times, serif;
+		}
+		li{
+			list-style: none; display: inline-block;
+		}
+		li a{
+			color: black; font-size: 24px; font-weight: bold; margin-right: 25px;
+		}
+		.nav{
+			background-color: white; margin-left: 10px; border-radius: 10px; padding: 10px; width: 90px;
+		}
+		.nav a{
+			color: black; font-weight: bold; font-size: 15px;
+		}
+        
+	</style>
+</head>
+<body>
+    <nav class="navbar">
+		<div class="navdiv">
+			<div class="logo"><a href="#">Oasis</a> </div>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">AboutUs</a></li>
+				<li><a href="#">Contact</a></li>
+				{% if session["user"] %}
+				<button class="nav"><a href="/logout">LogOut</a></button>
+				{% else %}
+				<button class="nav"><a href="/login">LogIN</a></button>
+				{% endif %}
+				<button class="nav"><a href="/signup">SignUp</a></button>
+			</ul>
+		</div>
+	</nav>
+	<div class=parent>
+    <div class="section">
+        <h1>Lake <br><span>Encroachment </span></h1>
+        <p class="par">
+            <b>Bengaluru's lakes</b> face severe encroachment and pollution due to rapid urbanization.<br>
+            <b>Bellandur Lake:</b> Receives 520 million liters of untreated sewage daily, causing toxic frothing and fires.<br>
+            <b>Yele Mallappa Shetty Lake:</b> Suffers from industrial waste, making its water unfit for use.<br>
+            <b>Flooding Impact:</b> Encroachment and poor drainage worsened Bengaluru’s 2024 floods, disrupting daily life.<br>
+            <b>Environmental Damage:</b> Loss of biodiversity, water contamination, and methane emissions from polluted lakes.<br>
+            <b>Urgent Need:</b> Stronger enforcement, urban planning, and community action to restore and protect Bengaluru's lakes.<br></p>
+		</div>
+    <div class="section">
+            <img src="static/images/stats.jpg" class="image">
+    </div>
+	</div>
+    <div class="container">
+			
+
+        {% if session["user"] %}
+            <form action="/process" method="POST" class="form">
+							<h2>Lake Analysis</h2>
+							<div class="input-group">
+                <label for="lake_name">Enter Lake Name:</label>
+                <input type="text" id="lake_name" name="lake_name" required>
+							</div>
+                <button type="submit" class="submit-btn">Get Lake Area</button>
+            </form>
+            
+        {% else %}
+            <p><a href="/login">Login</a> | <a href="/signup">Sign Up</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>

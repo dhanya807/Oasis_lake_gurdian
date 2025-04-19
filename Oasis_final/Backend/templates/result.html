@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div style="color: cornflowerblue;"><h1>Lake Analysis Result</h1></div><br>
+        <p><strong>Lake Name:</strong> {{ lake_name }}</p><br>
+        <p><strong>Lake Area:</strong> {{ lake_area }} sq. meters</p><br>
+        <img src="{{ url_for('static', filename='enhanced_lake_image.jpg') }}" alt="Enhanced Lake Image">
+        <br>
+        <a href="index.html">Go Back</a> |
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
+
+
+
+
